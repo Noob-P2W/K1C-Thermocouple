@@ -24,6 +24,11 @@ that anything will work. If you use this somewhere maybe you could credit me sho
 
 and put it under /usr/data/klipper/klippy/extras/ on your machine using SSH. (I recommend MobaXTerm for doing stuff like this.)
 
+!!! I'm still working on a method to auto-run this thing. !!!
+The current command to run is: python3 "/usr/data/arduino_max_bridge.py"
+
+
+
 3. Then edit printer.cfg on your machine and add this to your config:
 
 
