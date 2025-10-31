@@ -18,9 +18,9 @@ that anything will work. If you use this somewhere maybe you could credit me sho
 
 2. Now get the:
 
--  arduino_max_bridge.py
--  temperature_host.py 
--  temperature_sensors.cfg
+-  arduino_max_bridge.py (must be from here)
+-  temperature_host.py (can be ripped from klipper mainline, but I included the used version)
+-  temperature_sensors.cfg (can be ripped from klipper mainline, but I included the used version)
 
 and put it under /usr/data/klipper/klippy/extras/ on your machine using SSH. (I recommend MobaXTerm for doing stuff like this.)
 
