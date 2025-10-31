@@ -4,6 +4,7 @@ Since Creality K1, K1C and Max printers use CrealityOS which is an older klipper
 I want to add that this method is untested on the K1 and Max printers, but I am pretty sure it would work too with some thinkering if not out of the box.
 
 I used temperature host as the defined temperature sensor, but it's not directly supported by the CrealityOS, so I had to grab some files from the mainline klipper, paste them, write a bridge script and config the printer.cfg file to work.
+The python script takes the serial data and writes it onto a file on the ram, so it doesn't damage the storage from continous read writes. I think it could cause thermal runaway if the arduino doesn't respond, but I've yet to test it.
 You'll need an arduino nano as a bridge and a MAX31856 module that supports thermocouples.
 
 The temperature bridge script was created with ChatGPT since I know just barely enough python to find and correct it's mistakes so feel free to make new versions should you feel like it. I'm currently in the process of testing this, so there's no guarantee
