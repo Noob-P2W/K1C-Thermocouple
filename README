@@ -1,4 +1,63 @@
-I wanted to add a thermocouple to the Creality K1C and this is the method that worked. Since Creality K1, K1C and Max printers use CrealityOS which is an older klipper fork I had to make software modifications to make this work.
-I want to add that this method is untested on the K1 and Max printers, but I am pretty sure it would work. 
+I wanted to add a thermocouple to the Creality K1C and this is the method that worked. 
+--------------------------------------------------------------------------------------------------
+Since Creality K1, K1C and Max printers use CrealityOS which is an older klipper fork I had to make software modifications to make this work.
+I want to add that this method is untested on the K1 and Max printers, but I am pretty sure it would work too with some thinkering if not out of the box.
 
-1. Grab an arduino and put on the 
+I used temperature host as the defined temperature sensor, but it's not directly supported by the CrealityOS, so I had to grab some files from the mainline klipper, paste them, write a bridge script and config the printer.cfg file to work.
+You'll need an arduino nano as a bridge and a MAX31856 module that supports thermocouples.
+
+
+/// Here's how: ///
+
+1. Grab an arduino and upload the max31856_Arduino_Serial_Script.ino, check if data is coming through the serial monitor. It should display something like: T:20.15.
+  (For wiring check pins in the program btw)
+
+2. Now get the:
+
+-  arduino_max_bridge.py
+-  temperature_host.py 
+-  temperature_sensors.cfg
+
+and put it under /usr/data/klipper/klippy/extras/ on your machine using SSH. (I recommend MobaXTerm for doing stuff like this.)
+
+3. Then edit printer.cfg on your machine and add this to your config:
+
+
+/////
+
+[temperature_sensor Thermocouple]
+sensor_type: temperature_host
+sensor_path: /dev/shm/max.temp
+min_temp: 0
+max_temp: 500
+
+
+
+[extruder]
+max_extrude_only_distance: 1000.0
+max_extrude_cross_section: 80
+step_pin: nozzle_mcu:PB1
+dir_pin: nozzle_mcu:PB0
+enable_pin: !nozzle_mcu:PB2
+microsteps: 16
+rotation_distance: 6.9
+nozzle_diameter: 0.400
+filament_diameter: 1.750
+heater_pin: nozzle_mcu:PB7
+sensor_type: temperature_host
+sensor_path: /dev/shm/max.temp
+pressure_advance: 0.04
+pressure_advance_smooth_time: 0.040
+control: pid
+pid_Kp: 25.013
+pid_Ki: 2.566
+pid_Kd: 60.966
+min_temp: 0
+max_temp: 500
+
+/////
+
+Some parts should be already there, you can delete and paste this into it, but you can just add what's missing and set it to your own liking. 
+Hopefully now it should throw out no errors and you'll be able to use your thermocouple for the extruder.
+
+
