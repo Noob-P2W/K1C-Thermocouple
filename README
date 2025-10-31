@@ -1,0 +1,4 @@
+I wanted to add a thermocouple to the Creality K1C and this is the method that worked. Since Creality K1, K1C and Max printers use CrealityOS which is an older klipper fork I had to make software modifications to make this work.
+I want to add that this method is untested on the K1 and Max printers, but I am pretty sure it would work. 
+
+1. Grab an arduino and put on the 
