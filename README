@@ -5,10 +5,12 @@ I want to add that this method is untested on the K1 and Max printers, but I am 
 
 I used temperature host as the defined temperature sensor, but it's not directly supported by the CrealityOS, so I had to grab some files from the mainline klipper, paste them, write a bridge script and config the printer.cfg file to work.
 The python script takes the serial data and writes it onto a file on the ram, so it doesn't damage the storage from continous read writes. I think it could cause thermal runaway if the arduino doesn't respond, but I've yet to test it.
-You'll need an arduino nano as a bridge and a MAX31856 module that supports thermocouples.
+You'll need an arduino nano as a bridge and a MAX31856 module that supports thermocouples. Also this should work with usb hubs as well, just make sure the python bridge uses the correct pointer to the arduino.
 
 The temperature bridge script was created with ChatGPT since I know just barely enough python to find and correct it's mistakes so feel free to make new versions should you feel like it. I'm currently in the process of testing this, so there's no guarantee
 that anything will work and thinkering with this can burn your house down, please be careful. If you use this somewhere maybe you could credit me shomewhere, but the mod is free to use for everyone. :)
+
+
 
 
 /// Here's how: ///
