@@ -10,7 +10,7 @@ You'll need an arduino nano as a bridge and a MAX31856 module that supports ther
 The temperature bridge script was created with ChatGPT since I know just barely enough python to find and correct it's mistakes so feel free to make new versions should you feel like it. I'm currently in the process of testing this, so there's no guarantee
 that anything will work and thinkering with this can burn your house down, please be careful. If you use this somewhere maybe you could credit me shomewhere, but the mod is free to use for everyone. :)
 
-
+EDIT: I swapped my K1C mainboard with a BTT Manta M4P. Solved most issues, but it was a fairly tough journey. I don't recommend it for beginners.
 
 
 /// Here's how: ///
